@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  type: NodePort        # for minikube this exposes the app on a node port
+  selector:
+    app: nginx-demo
+  ports:
+    - protocol: TCP
+      port: 80          # service port
+      targetPort: 80    # container port
+      nodePort: 30080   # optional explicit nodePort (range 30000-32767)
